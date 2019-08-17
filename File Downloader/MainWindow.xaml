@@ -1,0 +1,88 @@
+﻿<controls:MetroWindow x:Class="File_Downloader.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:File_Downloader"
+        Closing="MetroWindow_Closing"
+        mc:Ignorable="d"
+        Title="File Upload/Downloader Project" FontFamily="Segoe UI" GlowBrush="Black" WindowTransitionsEnabled="False" BorderThickness="0" Height="450" Width="710" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+
+    <Grid>
+        <controls:MetroTabControl Margin="10,0,10,10">
+            <controls:MetroTabItem Header="Подключения" >
+                <Grid>
+
+                    <TextBox x:Name="TextBoxMessageInput" FontSize="14" HorizontalAlignment="Left" Height="52" Margin="10,311,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="463"/>
+                    <TextBox x:Name="TexBoxMessage" IsReadOnly="True" FontSize="14" HorizontalAlignment="Left" Height="296" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="463"/>
+                    <controls:MetroProgressBar x:Name="ProgressBar1" Margin="8,300,214,65" Height="1" Width="462" Value="0" />
+                    <TextBlock HorizontalAlignment="Left" Margin="491,10,0,0" TextWrapping="Wrap" Text="Автошифрование и дишифрование файла:" VerticalAlignment="Top" Height="40" Width="183" Foreground="#7F000000" FontFamily="Segoe UI Semibold" FontSize="14"/>
+                    <controls:ToggleSwitch x:Name="OnEncryptSwitch" Margin="491,50,12,283" OnLabel="Вкл" OffLabel="Выкл" Foreground="#E5000000" IsCheckedChanged="OnEncryptSwitch_IsCheckedChanged" Unchecked="OnEncryptSwitch_Unchecked" />
+                    <TextBlock FontSize="14" HorizontalAlignment="Left" Margin="491,100,0,0" TextWrapping="Wrap" Text="Двойное шифрование:" VerticalAlignment="Top" Height="24" Width="183" Foreground="#7F000000" FontFamily="Segoe UI Semibold"/>
+                    <controls:ToggleSwitch x:Name="OnDoubleEncryptSwitch" Margin="491,124,11,209" OnLabel="Вкл" OffLabel="Выкл" Foreground="#E5000000" IsCheckedChanged="OnDoubleEncryptSwitch_IsCheckedChanged" Unchecked="OnDoubleEncryptSwitch_Unchecked"/>
+                    <Button x:Name="SearchFileButton" Content="Обзор" HorizontalAlignment="Left" Margin="491,194,0,0" VerticalAlignment="Top" Width="75" FontWeight="Normal" FontSize="12" Click="SearchFileButton_Click"/>
+                    <Button x:Name="SendFileButton" IsEnabled="False" Content="Отправить" HorizontalAlignment="Left" Margin="592,194,0,0" VerticalAlignment="Top" Width="80" FontWeight="Normal" Height="30" FontSize="12" Click="SendFileButton_Click"/>
+                    <Button x:Name="ConnectButton" Content="Подключиться" HorizontalAlignment="Left" Margin="522,302,0,0" VerticalAlignment="Top" Width="118" FontWeight="Normal" FontSize="12" Click="ConnectButton_Click"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="491,244,0,0" TextWrapping="Wrap" Text="Никнейм:" VerticalAlignment="Top" Height="20" Width="180" FontSize="14" FontFamily="Segoe UI Semibold" Foreground="#7F000000"/>
+                    <TextBox x:Name="TextBoxUserName" HorizontalAlignment="Left" Height="23" Margin="491,270,0,0" TextWrapping="Wrap" Text="Noname" VerticalAlignment="Top" Width="180" FontSize="14" Foreground="#E5000000"/>
+                    <Button x:Name="SendMessageButton" IsEnabled="False" Content=">" HorizontalAlignment="Left" Margin="473,311,0,0" VerticalAlignment="Top" Width="20" FontWeight="Bold" FontSize="12" Height="52" FontFamily="Arial Black" Click="SendMessageButton_Click" />
+                </Grid>
+            </controls:MetroTabItem>
+
+            <controls:MetroTabItem Header="Шифрование" >
+                <Grid>
+
+                    <Button x:Name="EncryptButton" Content="Шифровать" Margin="488,10,80,333" Click="EncryptButton_Click"/>
+                    <Button x:Name="DencryptButton" Content="Дешифровать" Margin="332,10,236,333" Click="DencryptButton_Click"/>
+                    <Button x:Name="ChooseFileButton" Content="Выбрать файл" Margin="173,10,395,333" Click="ChooseFileButton_Click"/>
+                    <Button x:Name="FolderButton" Content="Папка сохранения" Margin="10,10,547,333" Click="FolderButton_Click_1"/>
+                    <Button x:Name="OpenFileButton" Content="Открыть файл" Margin="173,45,395,298" Click="OpenFileButton_Click"/>
+                    <Button x:Name="OpenFolderButton" Content="Открыть папку" Margin="10,45,547,298" Click="OpenFolderButton_Click_1"/>
+                    <TextBlock  HorizontalAlignment="Left" Margin="10,89,0,0" TextWrapping="Wrap" Text="Путь:" VerticalAlignment="Top" FontSize="14" Foreground="#CC000000"/>
+                    <TextBlock x:Name="TextBoxPathFile" HorizontalAlignment="Left" Margin="51,89,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="14" Foreground="#E5000000"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,130,0,0" TextWrapping="Wrap" Text="Дешифрование-шифрование текста:" VerticalAlignment="Top" Foreground="#CC000000" FontSize="14"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,174,0,0" TextWrapping="Wrap" Text="Из:" VerticalAlignment="Top" FontSize="14"/>
+                    <TextBox x:Name="TextBoxInputMessageEncrypt" HorizontalAlignment="Left" Height="23" Margin="35,172,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="639" FontSize="14"/>
+                    <TextBox x:Name="TextBoxOutputMessageDecrypt" HorizontalAlignment="Left" Height="23" Margin="35,223,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="639" FontSize="14"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="19,225,0,0" TextWrapping="Wrap" Text="В:" VerticalAlignment="Top" FontSize="14"/>
+                    <Button x:Name="EnryptMessageButton" Content="Шифровать" HorizontalAlignment="Left" Margin="10,265,0,0" VerticalAlignment="Top" Width="100" Click="EnryptMessageButton_Click" />
+                    <Button x:Name="DecryptMessageButton" Content="Дешифровать" HorizontalAlignment="Left" Margin="146,265,0,0" VerticalAlignment="Top" Width="100" Click="DecryptMessageButton_Click"/>
+                    <TextBlock x:Name="TextBoxStatus" HorizontalAlignment="Left" Margin="332,52,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="14" Foreground="#E5000000"/>
+                </Grid>
+            </controls:MetroTabItem>
+
+            <controls:MetroTabItem x:Name="OptionsTabItem" Header="Настройки" Foreground="Black">
+                <Grid Margin="58,0,75,0">
+                    <TextBlock HorizontalAlignment="Left" Margin="30,17,0,0" TextWrapping="Wrap" Text="Папка с файлами:" VerticalAlignment="Top" Height="23" Width="127" FontSize="14" FontFamily="Segoe UI Semibold" Foreground="#7F000000"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="30,59,0,0" TextWrapping="Wrap" Text="Хранить файлы в памяти:" VerticalAlignment="Top" Height="23" Width="174" FontSize="14" FontFamily="Segoe UI Semibold" Foreground="#7F000000"/>
+                    <controls:ToggleSwitch x:Name="ToggleSwitchMemory" IsCheckedChanged="ToggleSwitchMemory_IsCheckedChanged" Unchecked="ToggleSwitchMemory_Unchecked" Margin="46,82,347,251" OnLabel="Вкл" OffLabel="Выкл" Foreground="#E5000000"/>
+                    <Button Content="Обзор" HorizontalAlignment="Left" Margin="162,14,0,0" VerticalAlignment="Top" Width="75" FontSize="12" FontWeight="Normal" Click="FolderButton_Click"/>
+                    <Button Content="Открыть" HorizontalAlignment="Left" Margin="258,14,0,0" VerticalAlignment="Top" Width="76" FontSize="12" FontWeight="Normal" Click="OpenFolderButton_Click"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="30,143,0,0" TextWrapping="Wrap" Text="Сохранять все лог-файлы:" VerticalAlignment="Top" Height="23" Width="198" FontSize="14" FontFamily="Segoe UI Semibold" Foreground="#7F000000"/>
+                    <controls:ToggleSwitch x:Name="ToggleSwitchLog" IsCheckedChanged="ToggleSwitchLog_IsCheckedChanged" Unchecked="ToggleSwitchLog_Unchecked" Margin="46,166,347,167" OnLabel="Вкл" OffLabel="Выкл" Foreground="#E5000000"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="30,224,0,0" TextWrapping="Wrap" Text="Сериализация файла по:" VerticalAlignment="Top" Height="23" Width="198" FontSize="14" FontFamily="Segoe UI Semibold" Foreground="#7F000000"/>
+                    <controls:NumericUpDown x:Name="BufferSerializeNumirc" ValueChanged="BufferSerializeNumirc_ValueChanged" HasDecimals="False" Margin="95,247,347,96"  Value="1024" Interval="1024" InterceptArrowKeys="False" Minimum="1024" Maximum="1048576" FontSize="14" Background="White" Foreground="#CC000000"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="209,253,0,0" TextWrapping="Wrap" Text="Байт" VerticalAlignment="Top" FontSize="14" Foreground="#7F000000"/>
+                    <Button Content="Сохранить" HorizontalAlignment="Left" Margin="429,330,0,0" VerticalAlignment="Top" Width="100" FontWeight="Normal" FontSize="14" Click="SaveButton_Click"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="30,284,0,0" TextWrapping="Wrap" Text="Порты приема:" VerticalAlignment="Top" FontSize="14" Foreground="#7F000000" FontFamily="Segoe UI Semibold"/>
+                    <TextBox x:Name="TextboxPortInput" HorizontalAlignment="Left" TextAlignment="Center" Height="26" Margin="123,333,0,0" TextWrapping="Wrap" Text="8888" VerticalAlignment="Top" Width="81" FontSize="14" CaretBrush="Black" Foreground="#CC000000"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="58,337,0,0" TextWrapping="Wrap" Text="Файлов:" VerticalAlignment="Top" FontSize="14" Foreground="#7F000000" FontFamily="Segoe UI Semibold"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="30,312,0,0" TextWrapping="Wrap" Text="Сообщений:" VerticalAlignment="Top" FontSize="14" Foreground="#7F000000" FontFamily="Segoe UI Semibold"/>
+                    <TextBox x:Name="TextboxPortMessageInput" IsEnabled="False" HorizontalAlignment="Left" TextAlignment="Center" Height="26" Margin="123,308,0,0" TextWrapping="Wrap" Text="8889" VerticalAlignment="Top" Width="81" FontSize="14" CaretBrush="Black" Foreground="#CC000000"/>
+                </Grid>
+            </controls:MetroTabItem>
+
+            <controls:MetroTabItem Header="О программе">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="80">Ебал в рот</TextBlock>
+            </controls:MetroTabItem>
+
+        </controls:MetroTabControl>
+    </Grid>
+
+    <controls:MetroWindow.RightWindowCommands>
+        <controls:WindowCommands>
+            <Button Content="Password" Click="Button_Password_Click" />
+        </controls:WindowCommands>
+    </controls:MetroWindow.RightWindowCommands>
+</controls:MetroWindow>

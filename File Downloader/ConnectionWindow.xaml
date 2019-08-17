@@ -1,0 +1,17 @@
+﻿<Dialog:CustomDialog x:Class="File_Downloader.ConnectionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:File_Downloader"
+        mc:Ignorable="d"
+        xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+        Height="146.451" Width="1000.374" Title="Подключение">
+    <Grid Margin="-117,0,-117,2">
+        <Button Content="Подключиться" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top" Width="120" Height="34" FontWeight="Normal" FontSize="16" Click="ConnectButton_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="32,10,0,0" TextWrapping="Wrap" Text="Подключиться или ожидать подключение?" VerticalAlignment="Top" FontSize="18" FontFamily="Segoe UI Semibold" Foreground="Black"/>
+        <Button Content="Ожидать" HorizontalAlignment="Left" Margin="159,55,0,0" VerticalAlignment="Top" Width="120" Height="34" FontWeight="Normal" FontSize="16" Click="WaitButton_Click"/>
+        <Button IsCancel="True" Content="Отмена" HorizontalAlignment="Left" Margin="310,55,0,0" VerticalAlignment="Top" Width="120" Height="34" FontWeight="Normal" FontSize="16" Click="CancelButton_Click"/>
+    </Grid>
+</Dialog:CustomDialog>
